@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tone POC</title>
+    <script src="https://unpkg.com/tone@13.8.25/build/Tone.js"></script>
+</head>
+<body>
+    <script>
+        //create a synth and connect it to the master output (your speakers)
+        window.onclick = () => {
+var synth = new Tone.PolySynth(Tone.Synth).toMaster()
+
+//play a middle 'C' for the duration of an 8th note
+synth.triggerAttackRelease('C4', '8n')
+        }
+    </script>
+</body>
+</html>
