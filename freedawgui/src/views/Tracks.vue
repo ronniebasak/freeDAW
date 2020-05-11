@@ -19,9 +19,11 @@ import Piano from '@/components/Piano';
 import * as Tone from 'tone';
 import {Midi} from '@tonejs/midi';
 import TimeTrack from '../components/Track'
+import Ticker from '../event-bus/eventBus';
 import turkish from '../assets/turkish.json'
 
 let myTransport = Tone.Transport;
+myTransport.stop();
 
 export default {
   name: 'Home',
@@ -45,13 +47,12 @@ export default {
 
     handleTicks(time){
       this.timeTicks+=1
+      Ticker.$emit('TICK', this.timeTicks)
     },
 
     startPlaying(){
-      if(!this.toneStarted){
         Tone.start();
         this.toneStarted = true;
-      }
       myTransport.start();
       myTransport.scheduleRepeat(this.handleTicks, '1i')
     },
