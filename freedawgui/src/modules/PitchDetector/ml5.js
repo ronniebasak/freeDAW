@@ -85,10 +85,10 @@ class PitchDetection {
     while (bufferSize < minBufferSize) bufferSize *= 2;
 
 
-    await this.audioContext.audioWorklet.addModule("/pitchDetectionProcessor.js")
-    // const scriptNode = this.audioContext.createScriptProcessor(bufferSize, 1, 1);
-    const scriptNode = new AudioWorkletNode(this.audioContext, 'pitchDetectionProcessor');
-    // scriptNode.onaudioprocess = this.processMicrophoneBuffer.bind(this);
+    // await this.audioContext.audioWorklet.addModule("/pitchDetectionProcessor.js")
+    const scriptNode = this.audioContext.createScriptProcessor(bufferSize, 1, 1);
+    // const scriptNode = new AudioWorkletNode(this.audioContext, 'pitchDetectionProcessor');
+    scriptNode.onaudioprocess = this.processMicrophoneBuffer.bind(this);
     const gain = this.audioContext.createGain();
     gain.gain.setValueAtTime(0, this.audioContext.currentTime);
 
