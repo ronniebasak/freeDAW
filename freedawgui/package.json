@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^1.7.4",
     "@tonejs/midi": "^2.0.23",
     "core-js": "^3.6.4",
     "tone": "^14.6.13",
